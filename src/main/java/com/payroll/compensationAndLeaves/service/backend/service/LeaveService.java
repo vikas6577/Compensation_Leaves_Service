@@ -12,4 +12,7 @@ public interface LeaveService {
     //void updateLeave(Long leaveId, LeaveRequest leaveRequest);
 
     List<Leaves> getAllLeaves();
+
+
+    List<Leaves> getLeaves(Long empId);
 }

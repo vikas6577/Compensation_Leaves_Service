@@ -26,5 +26,11 @@ public class LeaveServiceImpl implements LeaveService {
     public List<Leaves> getAllLeaves() {
 
         return leavesRepository.findAll();
+
+    }
+
+    @Override
+    public List<Leaves> getLeaves(Long empId){
+        return leavesRepository.findByemployeeId(empId);
     }
 }
