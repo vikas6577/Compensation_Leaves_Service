@@ -2,6 +2,7 @@ package com.payroll.compensationAndLeaves.service.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Salary {
+@Builder
+public class SalaryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

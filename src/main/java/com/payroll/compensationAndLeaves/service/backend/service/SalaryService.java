@@ -1,18 +1,19 @@
 package com.payroll.compensationAndLeaves.service.backend.service;
 
 
-import com.payroll.compensationAndLeaves.service.backend.entity.Salary;
+import com.payroll.compensationAndLeaves.service.backend.dto.SalaryDto;
+import com.payroll.compensationAndLeaves.service.backend.entity.SalaryEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public interface SalaryService{
-    Salary insertSalary(Salary salary);
+    boolean insertSalary(SalaryDto salary);
 
-    Salary updateSalary(Long id, Salary updatedSalary);
+    boolean updateSalary(Long id, SalaryDto salarydto);
 
-    List<Salary> getAllSalaries();
+    List<SalaryEntity> getAllSalaries();
 
-    List<Salary> getSalaryByEmployeeId(Long employeeId);
+    List<SalaryEntity> getSalaryByEmployeeId(Long employeeId);
 }
