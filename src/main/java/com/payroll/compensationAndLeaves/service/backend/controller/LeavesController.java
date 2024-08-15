@@ -34,9 +34,17 @@ public class LeavesController {
     }
 
     // employeeId is passed as URL parameter
-    @GetMapping("/getLeave/{empId}")
+    @GetMapping("/getleave/{empId}")
     public ResponseEntity<List<Leaves>> getLeaves(@PathVariable("empId") Long empId){
             List<Leaves> emp_leave_list = leaveService.getLeaves(empId);
             return ResponseEntity.ok(emp_leave_list);
     }
+
+    //
+    @GetMapping("/getleaveemp/{managerId}")
+    public ResponseEntity<List<List<Leaves>>> getLeavesManager(@PathVariable("managerId") Long managerId){
+        List<List<Leaves>> emp_leave_list_manager = leaveService.getLeavesManager(managerId);
+        return ResponseEntity.ok(emp_leave_list_manager);
+    }
+
 }

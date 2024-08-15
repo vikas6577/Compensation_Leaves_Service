@@ -15,4 +15,6 @@ public interface LeaveService {
 
 
     List<Leaves> getLeaves(Long empId);
+
+    List<List<Leaves>> getLeavesManager(Long managerId);
 }
