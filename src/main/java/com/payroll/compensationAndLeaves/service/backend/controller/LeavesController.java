@@ -1,6 +1,6 @@
 package com.payroll.compensationAndLeaves.service.backend.controller;
 import com.payroll.compensationAndLeaves.service.backend.dto.LeaveDto;
-import com.payroll.compensationAndLeaves.service.backend.entity.LeavesTransaction;
+import com.payroll.compensationAndLeaves.service.backend.entity.Leaves;
 import com.payroll.compensationAndLeaves.service.backend.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,22 +42,22 @@ public class LeavesController {
     // Method to get all leaves
     @GetMapping("/getall")
     //@PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<LeavesTransaction>> getAllLeaves() {
-        List<LeavesTransaction> leaves = leaveService.getAllLeaves();
+    public ResponseEntity<List<Leaves>> getAllLeaves() {
+        List<Leaves> leaves = leaveService.getAllLeaves();
         return ResponseEntity.ok(leaves);
     }
 
     // Method to get leaves for a specific employee by their ID
     @GetMapping("/getleave/{empId}")
-    public ResponseEntity<List<LeavesTransaction>> getLeaves(@PathVariable("empId") Long empId) {
-        List<LeavesTransaction> empLeaveList = leaveService.getLeaves(empId);
+    public ResponseEntity<List<Leaves>> getLeaves(@PathVariable("empId") Long empId) {
+        List<Leaves> empLeaveList = leaveService.getLeaves(empId);
         return ResponseEntity.ok(empLeaveList);
     }
 
     // Method to get leaves for employees managed by a specific manager
     @GetMapping("/getleaveemp/{managerId}")
-    public ResponseEntity<List<List<LeavesTransaction>>> getLeavesManager(@PathVariable("managerId") Long managerId) {
-        List<List<LeavesTransaction>> empLeaveListManager = leaveService.getLeavesManager(managerId);
+    public ResponseEntity<List<List<Leaves>>> getLeavesManager(@PathVariable("managerId") Long managerId) {
+        List<List<Leaves>> empLeaveListManager = leaveService.getLeavesManager(managerId);
         return ResponseEntity.ok(empLeaveListManager);
     }
 

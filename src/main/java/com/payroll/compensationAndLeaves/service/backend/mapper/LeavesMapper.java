@@ -1,12 +1,12 @@
 package com.payroll.compensationAndLeaves.service.backend.mapper;
 
 import com.payroll.compensationAndLeaves.service.backend.dto.LeaveDto;
-import com.payroll.compensationAndLeaves.service.backend.entity.LeavesTransaction;
+import com.payroll.compensationAndLeaves.service.backend.entity.Leaves;
 
 public class LeavesMapper {
 
-    public static LeavesTransaction mapToLeaves(LeaveDto leaveDto){
-        LeavesTransaction leaves = new LeavesTransaction();
+    public static Leaves mapToLeaves(LeaveDto leaveDto){
+        Leaves leaves = new Leaves();
         leaves.setEmployeeId(leaveDto.getEmployeeId());
         leaves.setReason(leaveDto.getReason());
         return leaves;

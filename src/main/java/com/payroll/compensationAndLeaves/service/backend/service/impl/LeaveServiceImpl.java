@@ -2,8 +2,8 @@ package com.payroll.compensationAndLeaves.service.backend.service.impl;
 
 import com.payroll.compensationAndLeaves.service.backend.dto.EmployeeDto;
 import com.payroll.compensationAndLeaves.service.backend.dto.LeaveDto;
-import com.payroll.compensationAndLeaves.service.backend.entity.LeavesTransaction;
 import com.payroll.compensationAndLeaves.service.backend.entity.Leaves;
+import com.payroll.compensationAndLeaves.service.backend.entity.LeavesTransaction;
 import com.payroll.compensationAndLeaves.service.backend.mapper.LeavesMapper;
 import com.payroll.compensationAndLeaves.service.backend.repository.LeavesRepository;
 import com.payroll.compensationAndLeaves.service.backend.repository.LeavesRequestedRepository;
@@ -38,27 +38,27 @@ public class LeaveServiceImpl implements LeaveService {
 
     @Override
     public void updateLeave(LeaveDto leaveRequest) {
-        LeavesTransaction leaves = LeavesMapper.mapToLeaves(leaveRequest);
+        Leaves leaves = LeavesMapper.mapToLeaves(leaveRequest);
         leavesRepository.save(leaves);
     }
 
     @Override
-    public List<LeavesTransaction> getAllLeaves() {
+    public List<Leaves> getAllLeaves() {
         return leavesRepository.findAll();
     }
 
     @Override
-    public List<LeavesTransaction> getLeaves(Long empId){
+    public List<Leaves> getLeaves(Long empId){
         System.out.println("EmployeeId:"+empId);
         return leavesRepository.findByemployeeId(empId);
     }
 
     @Override
-    public  List<List<LeavesTransaction>> getLeavesManager(Long managerId){
+    public  List<List<Leaves>> getLeavesManager(Long managerId){
         // getting list of all employees whom reportsTo field is equal to managerId
         //url: http:localhost:8080/api/v1/employee/{managerId}/employees
 
-        List<List<LeavesTransaction>> response = new ArrayList<>();
+        List<List<Leaves>> response = new ArrayList<>();
         // create headers
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth("admin", "123");
@@ -78,7 +78,7 @@ public class LeaveServiceImpl implements LeaveService {
 
 
         for(EmployeeDto it : employeeArray) {
-            List<LeavesTransaction> leaves = getLeaves(it.getEmployeeId());
+            List<Leaves> leaves = getLeaves(it.getEmployeeId());
             // Add the leaves list to the response
             response.add(leaves);
         }
@@ -88,7 +88,7 @@ public class LeaveServiceImpl implements LeaveService {
     @Override
     public boolean createLeaves(Long employeeId){
 //       try{
-           Leaves leave= new Leaves();
+           LeavesTransaction leave= new LeavesTransaction();
            leave.setEmployeeId(employeeId);
            leave.setCurrentLeaves(40L);
            leave.setTotalLeaves(40L);
