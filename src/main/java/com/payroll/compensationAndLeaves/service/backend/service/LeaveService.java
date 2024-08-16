@@ -1,7 +1,7 @@
 package com.payroll.compensationAndLeaves.service.backend.service;
 
 import com.payroll.compensationAndLeaves.service.backend.dto.LeaveDto;
-import com.payroll.compensationAndLeaves.service.backend.entity.Leaves;
+import com.payroll.compensationAndLeaves.service.backend.entity.LeavesTransaction;
 
 import java.util.List;
 
@@ -11,10 +11,11 @@ public interface LeaveService {
 
     //void updateLeave(Long leaveId, LeaveRequest leaveRequest);
 
-    List<Leaves> getAllLeaves();
+    List<LeavesTransaction> getAllLeaves();
 
 
-    List<Leaves> getLeaves(Long empId);
+    List<LeavesTransaction> getLeaves(Long empId);
 
-    List<List<Leaves>> getLeavesManager(Long managerId);
+    List<List<LeavesTransaction>> getLeavesManager(Long managerId);
+    boolean createLeaves(Long employeeId);
 }

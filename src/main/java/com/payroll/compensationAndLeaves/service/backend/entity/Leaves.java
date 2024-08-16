@@ -1,80 +1,42 @@
 package com.payroll.compensationAndLeaves.service.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(
-    name ="employee_leaves_details"
+@Table (
+    name="employee_leaves_count"
 )
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Leaves {
-
     @Id
-    @Column(name = "leave_id")
+    @Column(name="leave_id")
     @GeneratedValue(
-            strategy = GenerationType.IDENTITY
+            strategy=GenerationType.IDENTITY
     )
-    private Long leaveId;
+    private Long LeaveId;
 
-    @Column(
-            name = "employee_id",
-            nullable = false
+    @Column (
+            name="employee_id",
+            nullable=false
     )
     private Long employeeId;
 
     @Column(
-            name = "leave_type",
-            nullable = false
+            name="total_leaves",
+            nullable=false
     )
-    private String leaveType; // e.g., "sick", "vacation"
+    private Long totalLeaves;
 
-    @Column(name = "reason")
-    private String reason;
-
-//    @Column(name = "date",
-//             nullable = false)
-//    private String date;
-//
-//    public String getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(String date) {
-//        this.date = date;
-//    }
-
-    public Long getLeaveId() {
-        return leaveId;
-    }
-
-    public void setLeaveId(Long leaveId) {
-        this.leaveId = leaveId;
-    }
-
-    public Long getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getLeaveType() {
-        return leaveType;
-    }
-
-    public void setLeaveType(String leaveType) {
-        this.leaveType = leaveType;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
+    @Column(
+            name="current_leaves",
+            nullable=false
+    )
+    private Long currentLeaves;
 }
+
