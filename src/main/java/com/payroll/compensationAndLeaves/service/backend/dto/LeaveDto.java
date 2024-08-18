@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 public class LeaveDto {
     private Long employeeId;
     private String reason;
-   // private String date ;
 
 }

@@ -1,42 +1,38 @@
 package com.payroll.compensationAndLeaves.service.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.time.LocalDate;
 
 @Entity
-@Table (
-    name="employee_leaves_count"
+@Table(
+    name ="employee_leaves_details"
 )
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class LeavesTransaction {
-    @Id
-    @Column(name="leave_id")
-    @GeneratedValue(
-            strategy=GenerationType.IDENTITY
-    )
-    private Long LeaveId;
 
-    @Column (
-            name="employee_id",
-            nullable=false
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
+    private Long Id;
+
+    @Column(
+            name = "employee_id",
+            nullable = false
     )
     private Long employeeId;
 
-    @Column(
-            name="total_leaves",
-            nullable=false
-    )
-    private Long totalLeaves;
+    private String reason;
 
-    @Column(
-            name="current_leaves",
-            nullable=false
-    )
-    private Long currentLeaves;
+    @Column (name="requested_date",nullable = false)
+    private LocalDate requestedDate;
+
+    @Column (name="approved_date")
+    private LocalDate approvedDate;
+
 }
 
