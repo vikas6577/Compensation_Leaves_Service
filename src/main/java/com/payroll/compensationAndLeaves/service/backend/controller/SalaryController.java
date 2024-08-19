@@ -22,15 +22,13 @@ public class SalaryController {
 
     @PostMapping
     //@PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Map<String, Object>> insertSalary(@RequestBody SalaryDto salaryDto) {
+    public ResponseEntity<Void> insertSalary(@RequestBody SalaryDto salaryDto) {
         Map<String,Object> response=new HashMap<>();
         boolean salary= salaryService.insertSalary(salaryDto);
-        if(salary==true) {
-            response.put("message", "Salary Added");
-            return new ResponseEntity<>(response, HttpStatus.OK);
+        if(salary) {
+            return new ResponseEntity<>(HttpStatus.OK);
         }else{
-            response.put("error","Error in saving the salary");
-            return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
