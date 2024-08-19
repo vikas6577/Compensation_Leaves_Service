@@ -7,7 +7,9 @@ import com.payroll.compensationAndLeaves.service.backend.service.SalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SalaryServiceImpl implements SalaryService {
@@ -42,8 +44,18 @@ public class SalaryServiceImpl implements SalaryService {
          }
     }
 
-    public List<SalaryEntity> getAllSalaries() {
-        return salaryRepository.findAll();
+    public List<SalaryDto> getAllSalaries() {
+        List<SalaryEntity> salaries = salaryRepository.findAll();
+
+        // Convert SalaryEntity list to SalaryDto list using builder pattern
+        List<SalaryDto> salariesDto = salaries.stream()
+                .map(salary -> SalaryDto.builder()
+                        .employeeId(salary.getEmployeeId())
+                        .salary(salary.getSalary())
+                        .build())
+                .collect(Collectors.toList());
+
+        return salariesDto;
 
     }
 

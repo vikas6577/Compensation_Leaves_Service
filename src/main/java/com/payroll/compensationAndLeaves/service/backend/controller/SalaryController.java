@@ -49,7 +49,7 @@ public class SalaryController {
     @GetMapping
     //@PreAuthorize("hasAnyRole('ADMIN', 'ACCOUNTANT')")
     public ResponseEntity<Map<String,Object>> getAllSalaries() {
-        List<SalaryEntity>salaries= salaryService.getAllSalaries();
+        List<SalaryDto>salaries= salaryService.getAllSalaries();
         Map<String,Object> response=new HashMap<>();
         response.put("Data",salaries);
         return new ResponseEntity<>(response,HttpStatus.OK);

@@ -1,5 +1,6 @@
 package com.payroll.compensationAndLeaves.service.backend.controller;
 import com.payroll.compensationAndLeaves.service.backend.dto.LeaveDto;
+import com.payroll.compensationAndLeaves.service.backend.dto.LeavesCountDto;
 import com.payroll.compensationAndLeaves.service.backend.entity.Leaves;
 import com.payroll.compensationAndLeaves.service.backend.entity.LeavesTransaction;
 import com.payroll.compensationAndLeaves.service.backend.service.LeaveService;
@@ -39,8 +40,8 @@ public class LeavesController {
 //    }
 
     @GetMapping
-    public ResponseEntity<List<Leaves>> getAllEmployeeLeaves() {
-        List<Leaves> leaves = leaveService.getAllEmployeeLeaves();
+    public ResponseEntity<List<LeavesCountDto>> getAllEmployeeLeaves() {
+        List<LeavesCountDto> leaves = leaveService.getAllEmployeeLeaves();
         return ResponseEntity.ok(leaves);
     }
 
