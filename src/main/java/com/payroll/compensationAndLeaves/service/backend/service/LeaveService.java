@@ -1,6 +1,7 @@
 package com.payroll.compensationAndLeaves.service.backend.service;
 
 import com.payroll.compensationAndLeaves.service.backend.dto.LeaveDto;
+import com.payroll.compensationAndLeaves.service.backend.dto.LeavesCountDto;
 import com.payroll.compensationAndLeaves.service.backend.entity.Leaves;
 import com.payroll.compensationAndLeaves.service.backend.entity.LeavesTransaction;
 
@@ -12,7 +13,7 @@ public interface LeaveService {
 
     //void updateLeave(Long leaveId, LeaveRequest leaveRequest);
 
-    List<Leaves> getAllEmployeeLeaves();
+    List<LeavesCountDto> getAllEmployeeLeaves();
 
 
     List<Leaves> getLeavesOfEmployee(Long empId);

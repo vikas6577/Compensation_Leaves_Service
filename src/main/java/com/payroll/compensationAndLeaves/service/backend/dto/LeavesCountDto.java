@@ -1,15 +1,18 @@
 package com.payroll.compensationAndLeaves.service.backend.dto;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class SalaryDto {
+@Data
+public class LeavesCountDto {
     private Long employeeId;
-    private Long salary;
+    private Long currentLeaves;
+    private Long totalLeaves;
+
 }

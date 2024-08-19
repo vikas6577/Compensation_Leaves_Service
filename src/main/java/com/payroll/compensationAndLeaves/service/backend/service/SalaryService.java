@@ -13,7 +13,7 @@ public interface SalaryService{
 
     boolean updateSalary(Long id, SalaryDto salarydto);
 
-    List<SalaryEntity> getAllSalaries();
+    List<SalaryDto> getAllSalaries();
 
     List<SalaryEntity> getSalaryByEmployeeId(Long employeeId);
 }

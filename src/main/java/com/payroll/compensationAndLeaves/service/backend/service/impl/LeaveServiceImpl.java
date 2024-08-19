@@ -2,6 +2,8 @@ package com.payroll.compensationAndLeaves.service.backend.service.impl;
 
 import com.payroll.compensationAndLeaves.service.backend.dto.EmployeeDto;
 import com.payroll.compensationAndLeaves.service.backend.dto.LeaveDto;
+import com.payroll.compensationAndLeaves.service.backend.dto.LeavesCountDto;
+import com.payroll.compensationAndLeaves.service.backend.dto.SalaryDto;
 import com.payroll.compensationAndLeaves.service.backend.entity.LeavesTransaction;
 import com.payroll.compensationAndLeaves.service.backend.entity.Leaves;
 import com.payroll.compensationAndLeaves.service.backend.mapper.LeavesMapper;
@@ -22,6 +24,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class LeaveServiceImpl implements LeaveService {
@@ -38,9 +41,17 @@ public class LeaveServiceImpl implements LeaveService {
     private RestTemplate restTemplate;
 
     @Override
-    public List<Leaves> getAllEmployeeLeaves() {
+    public List<LeavesCountDto> getAllEmployeeLeaves() {
         List<Leaves> employeeLeaves =leavesRepository.findAll();
-        return employeeLeaves;
+        List<LeavesCountDto> leavesCountDtos = employeeLeaves.stream()
+                .map(leaves -> LeavesCountDto.builder()
+                        .employeeId(leaves.getEmployeeId())
+                        .currentLeaves(leaves.getCurrentLeaves())
+                        .totalLeaves(leaves.getTotalLeaves())
+                        .build())
+                .collect(Collectors.toList());
+
+        return leavesCountDtos;
     }
 
     @Override
