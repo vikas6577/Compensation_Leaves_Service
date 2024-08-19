@@ -19,16 +19,14 @@ public class LeavesController {
 
     // Method to create leaves for an employee
     @PostMapping("/{id}")
-    public ResponseEntity<String> createLeaves(@PathVariable("id") Long employee_id)
+    public ResponseEntity<Void> createLeaves(@PathVariable("id") Long employee_id)
     {
         boolean leaves = leaveService.createLeaves(employee_id);
         String response;
         if (leaves) {
-            response = "Leaves added";
-            return new ResponseEntity<>(response, HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            response = "Error in adding leaves";
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 

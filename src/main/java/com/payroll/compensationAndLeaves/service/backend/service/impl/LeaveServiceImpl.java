@@ -80,17 +80,12 @@ public class LeaveServiceImpl implements LeaveService {
 
     @Override
     public boolean createLeaves(Long employeeId){
-//       try{
            Leaves leave= new Leaves();
            leave.setEmployeeId(employeeId);
            leave.setCurrentLeaves(40L);
            leave.setTotalLeaves(40L);
            leavesRepository.save(leave);
            return true;
-//       }catch(Exception e){
-//           e.printStackTrace();
-//           return false;
-//       }
     }
 
 
