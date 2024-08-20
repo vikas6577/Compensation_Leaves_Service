@@ -1,5 +1,6 @@
 package com.payroll.compensationAndLeaves.service.backend.entity;
 
+import com.payroll.compensationAndLeaves.service.backend.enums.LeaveStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,6 +34,14 @@ public class LeavesTransaction {
 
     @Column (name="approved_date")
     private LocalDate approvedDate;
+
+    @Column (name="leave_status")
+    private LeaveStatus status;
+
+    private Long reportsTo;
+
+    @Column (name="leaves_count", nullable = false)
+    private Long leavesCount;
 
 }
 

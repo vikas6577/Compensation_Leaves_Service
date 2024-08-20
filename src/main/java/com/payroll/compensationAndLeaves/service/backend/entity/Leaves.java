@@ -1,5 +1,6 @@
 package com.payroll.compensationAndLeaves.service.backend.entity;
 
+import com.payroll.compensationAndLeaves.service.backend.enums.LeaveStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,7 +40,6 @@ public class Leaves {
             nullable=false
     )
     private Long totalLeaves;
-
 
 }
 

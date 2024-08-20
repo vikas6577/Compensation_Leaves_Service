@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface LeavesTransactionRepository extends JpaRepository<Leaves,Long> {
-//    List<LeavesTransaction> findAllByEmployeeId(Long employeeId);
+public interface LeavesTransactionRepository extends JpaRepository<LeavesTransaction,Long> {
+    List<LeavesTransaction> findByReportsTo(Long reportsTo);
+
 }
