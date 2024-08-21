@@ -5,6 +5,8 @@ server:
     port: 8081
 
 spring:
+    application:
+        name: Compensation_Service
     datasource:
         url: jdbc:h2:mem:mydb
         username: sa
@@ -17,3 +19,10 @@ spring:
         console:
             enabled: true
             path: /h2-console  # You can customize this path if needed
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:9000/eureka/
+        register-with-eureka: true
+        fetch-registry: true
