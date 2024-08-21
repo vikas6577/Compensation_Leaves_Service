@@ -8,17 +8,19 @@ spring:
     application:
         name: Compensation_Service
     datasource:
-        url: jdbc:h2:mem:mydb
-        username: sa
-        password: ""
-        driverClassName: org.h2.Driver
-    jpa:
-        database-platform: org.hibernate.dialect.H2Dialect
+      url: jdbc:mysql://localhost:3306/compensation_leave_db
+        username: root
+        password: Jayant26@
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jpa:
+            hibernate:
+                ddl-auto: update
+            show-sql: true
+            properties:
+                hibernate:
+                    dialect: org.hibernate.dialect.MySQLDialect
 
-    h2:
-        console:
-            enabled: true
-            path: /h2-console  # You can customize this path if needed
+
 
 eureka:
     client:
@@ -26,3 +28,5 @@ eureka:
             defaultZone: http://localhost:9000/eureka/
         register-with-eureka: true
         fetch-registry: true
+
+        
