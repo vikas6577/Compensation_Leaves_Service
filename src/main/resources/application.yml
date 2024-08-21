@@ -6,7 +6,7 @@ server:
 
 spring:
     application:
-        name: Compensation_Service
+        name: COMPENSATION-SERVICE
     datasource:
       url: jdbc:mysql://localhost:3306/compensation_leave_db
       username: root
